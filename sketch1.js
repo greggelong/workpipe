@@ -10,7 +10,7 @@ function setup() {
 }
 
 function draw() {
-  background(127);
+  background(0);
 
   //image(boatcanvas,0,0)
   //stroke(frameCount %360, 75, 100);
@@ -22,12 +22,12 @@ function draw() {
   y = mouseY;
   px = pmouseX;
   py = pmouseY;
-  if (mouseIsPressed) {
-    points1.push(createVector(x, y));
-    points1.push(createVector(px, py));
-    points2.unshift(createVector(width - px, py));
-    points2.unshift(createVector(width - x, y));
-  }
+  //   if (mouseIsPressed) {
+  //     points1.push(createVector(x, y));
+  //     points1.push(createVector(px, py));
+  //     points2.unshift(createVector(width - px, py));
+  //     points2.unshift(createVector(width - x, y));
+  //   }
 
   for (let i = 0; i < points1.length - 1; i++) {
     stroke(0, 255, 0);
@@ -41,9 +41,26 @@ function draw() {
   }
   let boatps = points1.concat(points2);
   let boat = boatps[frameCount % boatps.length];
-  fill(255);
+  fill(255, 0, 0);
   if (boat != null) {
     noStroke();
-    ellipse(boat.x, boat.y, 40, 10);
+    ellipse(boat.x, boat.y, 50, 30);
   }
+}
+
+// Function to handle drawing logic for both touch & mouse
+function addPoint(x, y, px, py) {
+  points1.push(createVector(x, y));
+  points1.push(createVector(px, py));
+  points2.unshift(createVector(width - px, py));
+  points2.unshift(createVector(width - x, y));
+
+  // Keep points array from growing infinitely
+  //if (points1.length > maxPoints) points1.splice(0, 2);
+  // if (points2.length > maxPoints) points2.splice(0, 2);
+}
+
+// Works for both mouse and touch input
+function mouseDragged() {
+  addPoint(mouseX, mouseY, pmouseX, pmouseY);
 }
