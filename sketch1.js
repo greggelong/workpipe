@@ -4,6 +4,7 @@ let points2 = [];
 let boatcanvas;
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  pixelDensity(1);
 
   // colorMode(HSB);
 }
