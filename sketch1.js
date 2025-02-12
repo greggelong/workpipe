@@ -63,4 +63,5 @@ function addPoint(x, y, px, py) {
 // Works for both mouse and touch input
 function mouseDragged() {
   addPoint(mouseX, mouseY, pmouseX, pmouseY);
+  return false;
 }
