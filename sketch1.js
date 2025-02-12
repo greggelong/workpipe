@@ -1,0 +1,48 @@
+let x, y, px, py;
+let points1 = [];
+let points2 = [];
+let boatcanvas;
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+
+  // colorMode(HSB);
+}
+
+function draw() {
+  background(127);
+
+  //image(boatcanvas,0,0)
+  //stroke(frameCount %360, 75, 100);
+  stroke(0, 0, 255);
+
+  strokeWeight(20);
+
+  x = mouseX;
+  y = mouseY;
+  px = pmouseX;
+  py = pmouseY;
+  if (mouseIsPressed) {
+    points1.push(createVector(x, y));
+    points1.push(createVector(px, py));
+    points2.unshift(createVector(width - px, py));
+    points2.unshift(createVector(width - x, y));
+  }
+
+  for (let i = 0; i < points1.length - 1; i++) {
+    stroke(0, 255, 0);
+    line(points1[i].x, points1[i].y, points1[i + 1].x, points1[i + 1].y);
+    line(
+      width - points1[i].x,
+      points1[i].y,
+      width - points1[i + 1].x,
+      points1[i + 1].y
+    );
+  }
+  let boatps = points1.concat(points2);
+  let boat = boatps[frameCount % boatps.length];
+  fill(255);
+  if (boat != null) {
+    noStroke();
+    ellipse(boat.x, boat.y, 40, 10);
+  }
+}
