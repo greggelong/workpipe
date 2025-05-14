@@ -14,7 +14,7 @@ function setup() {
   instructions.style("top", "10px");
   instructions.style("left", "10px");
   instructions.style("color", "white");
-  instructions.style("font-size", "24px");
+  instructions.style("font-size", "26px");
   instructions.style("font-family", "sans-serif");
   instructions.style("background", "rgba(0,0,0,0.5)");
   instructions.style("padding", "10px");
