@@ -6,7 +6,20 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   pixelDensity(1);
 
-  // colorMode(HSB);
+  // Add bilingual instruction text
+  let instructions = createDiv(
+    "🖐️ Use your finger to draw. 🔄 Refresh the page to start over.<br>🖐️ 用手指在屏幕上画画。🔄 刷新页面重新开始。"
+  );
+  instructions.style("position", "absolute");
+  instructions.style("top", "10px");
+  instructions.style("left", "10px");
+  instructions.style("color", "white");
+  instructions.style("font-size", "18px");
+  instructions.style("font-family", "sans-serif");
+  instructions.style("background", "rgba(0,0,0,0.5)");
+  instructions.style("padding", "10px");
+  instructions.style("border-radius", "8px");
+  instructions.style("z-index", "10");
 }
 
 function draw() {
